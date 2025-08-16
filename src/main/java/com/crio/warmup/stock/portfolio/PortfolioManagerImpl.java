@@ -101,7 +101,7 @@ public class PortfolioManagerImpl implements PortfolioManager {
     }
 
     protected String buildUri(String symbol, LocalDate startDate, LocalDate endDate) {
-        String apiKey = "17a63defaa6efdfbd16bc421ba5886d3a0f8b754"; // or PortfolioManagerApplication.getToken()
+        String apiKey = "Your api key"; // or PortfolioManagerApplication.getToken()
         return "https://api.tiingo.com/tiingo/daily/" + symbol + "/prices?startDate="
                 + startDate + "&endDate=" + endDate + "&token=" + apiKey;
     }
