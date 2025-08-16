@@ -1,0 +1,65 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group = 'com.crio.warmup'
+version = '1.0.0'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+//mainClassName = 'com.crio.warmup.stock.PortfolioManagerApplication'
+
+
+dependencies {
+    // https://mvnrepository.com/artifact/org.springframework/spring-web
+    implementation 'org.springframework:spring-web:5.3.18'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.2'
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310
+    implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310:2.13.2'
+
+    implementation 'org.apache.logging.log4j:log4j-api:2.12.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.12.1'
+    implementation group: 'org.apache.logging.log4j', name: 'log4j-jul', version: '2.12.1'
+    implementation group: 'org.slf4j', name: 'jul-to-slf4j', version: '1.7.28'
+
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.12.2'
+
+    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter
+//    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    // https://mvnrepository.com/artifact/org.mockito/mockito-junit-jupiter
+//    testImplementation 'org.mockito:mockito-junit-jupiter:4.0.0'
+
+
+
+
+    testImplementation platform('org.junit:junit-bom:5.10.0')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = 'com.crio.warmup'
+            artifactId = 'annual-return'
+            version = '1.0.0'
+        }
+    }
+}
